@@ -1,0 +1,17 @@
+package Listbox;
+
+public class demo1 
+{
+	public static void main(String[] args) 
+	{		
+		int a=10;
+		int b=20;
+		int sum=a+b;
+		System.out.println(sum);
+		
+		
+		int mult=a*b;
+		System.out.println(mult);
+	
+	}
+}
