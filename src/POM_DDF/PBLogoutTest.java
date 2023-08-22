@@ -1,4 +1,4 @@
-package POM;
+package POM_DDF;
 
 import java.time.Duration;
 
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class PBLoginTest
+public class PBLogoutTest
 {
 	public static void main(String[] args) throws InterruptedException {
 		
@@ -38,13 +38,10 @@ public class PBLoginTest
 		home.openDDOptionPBHomePageMyAcc();
 		Thread.sleep(2000);
 		
-		MyAccPage myAcc=new MyAccPage(driver);
-		myAcc.clickMyAccPageMyProfile();
-		Thread.sleep(2000);
+
+		MyAccPage acc=new MyAccPage(driver);
+		acc.clickMyAccPageMyLogout();
 		
-		MyProfilePage profile=new MyProfilePage(driver);
-		profile.switchToChildWindow();
-		profile.verifyMyProfilePageFullName();
 		
 		Thread.sleep(2000);
 		

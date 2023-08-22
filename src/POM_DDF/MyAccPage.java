@@ -1,4 +1,4 @@
-package POM;
+package POM_DDF;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

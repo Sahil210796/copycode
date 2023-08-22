@@ -1,17 +1,24 @@
-package POM;
+package POM_DDF;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.Duration;
 
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class PBLoginTest
 {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, EncryptedDocumentException, IOException {
 		
+		FileInputStream file=new FileInputStream("D:\\Daily Examples\\Revision Session2\\SeleniumRevision2.xlsx");
+		Sheet sh = WorkbookFactory.create(file).getSheet("DDF");
+			
 		ChromeOptions op = new ChromeOptions();
-		
 		op.addArguments("--disable-notifications");
 		
 		WebDriver driver=new ChromeDriver(op);
@@ -20,17 +27,19 @@ public class PBLoginTest
 		driver.manage().window().maximize();
 		
 		
-		PBLoginPage login=new PBLoginPage(driver);
-		login.clickPBLoginPageSignInBtn();
+		PBLoginPage login=new PBLoginPage(driver);    //early initialization
+		login.clickPBLoginPageSignInBtn();            //late initialization
 		Thread.sleep(2000);
 		
 		PBMobNumPage mobNum=new PBMobNumPage(driver);
-		mobNum.inpPBMobNumPageMobnum();
+		String mobileNumber = sh.getRow(0).getCell(0).getStringCellValue();
+		mobNum.inpPBMobNumPageMobnum(mobileNumber);
 		mobNum.clickPBMobNumPageLoginWithPwd();
 		Thread.sleep(2000);
 		
 		PBPwdPage pwd=new PBPwdPage(driver);
-		pwd.inpPBPwdPagePwd();
+		String password = sh.getRow(0).getCell(1).getStringCellValue();
+		pwd.inpPBPwdPagePwd(password);
 		pwd.clickPBPwdPageSignInBtn();
 		Thread.sleep(2000);
 		
@@ -44,7 +53,8 @@ public class PBLoginTest
 		
 		MyProfilePage profile=new MyProfilePage(driver);
 		profile.switchToChildWindow();
-		profile.verifyMyProfilePageFullName();
+		String expFullName = sh.getRow(0).getCell(2).getStringCellValue();
+		profile.verifyMyProfilePageFullName(expFullName);
 		
 		Thread.sleep(2000);
 		

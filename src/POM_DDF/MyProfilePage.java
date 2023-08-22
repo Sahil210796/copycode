@@ -1,4 +1,4 @@
-package POM;
+package POM_DDF;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -27,10 +27,9 @@ public class MyProfilePage
 		driver.switchTo().window(al.get(1));		
 	}
 	
-	public void verifyMyProfilePageFullName()
+	public void verifyMyProfilePageFullName(String expFullName)
 	{
 		String actFullName = fullName.getAttribute("value");
-		String expFullName="Jan batch";
 		if (actFullName.equals(expFullName)) 
 		{
 			System.out.println("Pass");
