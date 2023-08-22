@@ -11,6 +11,7 @@ public class PBLoginTest
 	public static void main(String[] args) {
 		
 		ChromeOptions op = new ChromeOptions();
+		
 		op.addArguments("--disable-notifications");
 		
 		WebDriver driver=new ChromeDriver(op);
