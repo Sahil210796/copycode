@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class example5_Keyword3_Priority2
 {
-	@Test(priority = 2)            //duplicate priority=2
+	@Test(priority = -3)            //duplicate priority=2
 	public void TC3() 
 	{
 		Reporter.log("running TC3", true);
